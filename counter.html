@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dual Counter App</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 2rem;
+        }
+
+        .counter {
+            margin-bottom: 2rem;
+        }
+
+        .counter h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .value {
+            font-size: 2rem;
+            margin: 0.5rem 0;
+        }
+
+        button {
+            margin: 0.25rem;
+            padding: 0.5rem 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="counter">
+        <h2>Combat Points</h2>
+        <div class="value" id="counter1-value">2</div>
+        <button onclick="updateCounter(1, 1)">+1</button>
+        <button onclick="updateCounter(1, -1)">-1</button>
+        <button onclick="updateCounter(10, 1)">+10</button>
+        <button onclick="updateCounter(10, -1)">-10</button>
+    </div>
+
+    <div class="counter">
+        <h2>Health</h2>
+        <div class="value" id="counter2-value">50</div>
+        <button onclick="updateCounter2(1, 1)">+1</button>
+        <button onclick="updateCounter2(1, -1)">-1</button>
+        <button onclick="updateCounter2(10, 1)">+10</button>
+        <button onclick="updateCounter2(10, -1)">-10</button>
+    </div>
+
+    <button onclick="resetCounters()">Reset</button>
+
+    <script>
+        let counter1 = 2;
+        let counter2 = 50;
+
+        function updateCounter(step, direction) {
+            counter1 += step * direction;
+            if (counter1 < 0) counter1 = 0;
+            if (counter1 > 15) counter1 = 15;
+            document.getElementById('counter1-value').textContent = counter1;
+        }
+
+        function updateCounter2(step, direction) {
+            counter2 += step * direction;
+            if (counter2 < 0) counter2 = 0;
+            if (counter2 > 100) counter2 = 100;
+
+            // Format to always show two digits
+            document.getElementById('counter2-value').textContent = counter2.toString().padStart(2, '0');
+        }
+
+        function resetCounters() {
+            counter1 = 2;
+            counter2 = 50;
+            document.getElementById('counter1-value').textContent = counter1;
+            document.getElementById('counter2-value').textContent = counter2.toString().padStart(2, '0');
+        }
+    </script>
+</body>
+
+</html>
