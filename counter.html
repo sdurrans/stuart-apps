@@ -27,6 +27,15 @@
             margin: 0.25rem;
             padding: 0.5rem 1rem;
         }
+
+        .timer-display {
+            font-size: 48px;
+            margin: 20px;
+        }
+
+        hr {
+            margin: 2rem 0;
+        }
     </style>
 </head>
 
@@ -50,6 +59,21 @@
     </div>
 
     <button onclick="resetCounters()">Reset</button>
+
+    <hr>
+    <h1>Timer</h1>
+    <div class="timer-display" id="timer">00:00</div>
+
+    <div>
+        <button onclick="addTime(1)">+1 min</button>
+        <button onclick="addTime(5)">+5 min</button>
+        <button onclick="addTime(10)">+10 min</button>
+    </div>
+
+    <div>
+        <button onclick="startTimer()">Start</button>
+        <button onclick="resetTimer()">Reset</button>
+    </div>
 
     <script>
         let counter1 = 2;
@@ -77,6 +101,60 @@
             document.getElementById('counter1-value').textContent = counter1;
             document.getElementById('counter2-value').textContent = counter2.toString().padStart(2, '0');
         }
+
+        let totalSeconds = 0;
+        let timerInterval = null;
+        let lastStartTime = 0;
+        let resetStage = 0;
+
+        function updateDisplay(seconds) {
+            const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+            const secs = String(seconds % 60).padStart(2, '0');
+            document.getElementById("timer").textContent = `${mins}:${secs}`;
+        }
+
+        function addTime(minutes) {
+            totalSeconds += minutes * 60;
+            updateDisplay(totalSeconds);
+        }
+
+        function startTimer() {
+            if (timerInterval !== null) return; // prevent multiple intervals
+
+            lastStartTime = totalSeconds;
+            resetStage = 0;
+
+            timerInterval = setInterval(() => {
+                if (totalSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                    return;
+                }
+                totalSeconds--;
+                updateDisplay(totalSeconds);
+            }, 1000);
+        }
+
+        function resetTimer() {
+            if (resetStage === 0) {
+                totalSeconds = lastStartTime;
+                updateDisplay(totalSeconds);
+                resetStage = 1;
+            } else {
+                totalSeconds = 0;
+                updateDisplay(totalSeconds);
+                resetStage = 0;
+            }
+
+            // Stop the timer if it's running
+            if (timerInterval !== null) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
+
+        // Initialize display
+        updateDisplay(totalSeconds);
     </script>
 </body>
 
