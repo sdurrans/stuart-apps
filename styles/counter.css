@@ -40,8 +40,8 @@ button {
     min-width: 70px;
 }
 
-button:active,
-button:focus {
+button:active
+ {
     background: #0056b3;
     outline: none;
 }
