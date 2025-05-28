@@ -40,7 +40,7 @@ button {
     border: none;
     background: linear-gradient(90deg, #ff0000, #ffff00);
     /* Red to yellow */
-    color: #fff;
+    color: #000000;
     transition: background 0.2s ease;
     min-width: 70px;
 }
