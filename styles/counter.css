@@ -2,6 +2,10 @@ body {
     font-family: sans-serif;
     padding: 1rem;
     background: #f8f9fa;
+    background-image: url('images/Dthrone.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .counter {
@@ -40,8 +44,7 @@ button {
     min-width: 70px;
 }
 
-button:active
- {
+button:active {
     background: #0056b3;
     outline: none;
 }
