@@ -36,7 +36,7 @@ button {
     border: none;
     background: #007bff;
     color: #fff;
-    transition: background 0.2s;
+    transition: background 0.2s ease;
     min-width: 70px;
 }
 
