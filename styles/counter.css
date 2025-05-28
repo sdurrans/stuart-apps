@@ -132,7 +132,7 @@ button,
 }
 
 @media (max-width: 900px) and (orientation: landscape),
-(max-height: 500px) and (orientation: landscape) {
+(max-height: 400px) and (orientation: landscape) {
     body {
         padding: 0.5rem;
     }
