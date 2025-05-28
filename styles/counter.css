@@ -38,14 +38,16 @@ button {
     font-size: 1rem;
     border-radius: 8px;
     border: none;
-    background: #007bff;
+    background: linear-gradient(90deg, #ff0000, #ffff00);
+    /* Red to yellow */
     color: #fff;
     transition: background 0.2s ease;
     min-width: 70px;
 }
 
 button:active {
-    background: #0056b3;
+    background: linear-gradient(90deg, #cc0000, #ffcc00);
+    /* Slightly darker on press */
     outline: none;
 }
 
