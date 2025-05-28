@@ -158,6 +158,10 @@ button,
 (max-height: 400px) and (orientation: landscape) {
     body {
         padding: 0.5rem;
+        background-image: url('images/Dthrone.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
     .counters-row {
