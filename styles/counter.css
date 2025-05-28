@@ -94,7 +94,8 @@ div>button {
     margin: 1rem 0;
 }
 
-button, .timer-buttons button {
+button,
+.timer-buttons button {
     touch-action: manipulation;
 }
 
