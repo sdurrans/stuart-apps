@@ -181,5 +181,8 @@ button,
         min-width: 80px;
         width: 80px;
         max-width: 60px;
+        background: linear-gradient(45deg, #ff0000, #ffff00);
+            /* Red to yellow */
+            color: #000;
     }
 }
