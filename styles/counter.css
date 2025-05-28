@@ -10,7 +10,7 @@ body {
 
 .counter {
     margin-bottom: 2rem;
-    background: #0077ff;
+    background: #65acfd;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     padding: 1rem;
@@ -60,7 +60,7 @@ button:disabled {
     font-size: 2.5rem;
     margin: 20px auto;
     text-align: center;
-    background: #0077ff;
+    background: #65acfd;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     padding: 1rem 0;
