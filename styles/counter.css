@@ -38,7 +38,7 @@ button {
     font-size: 1rem;
     border-radius: 8px;
     border: none;
-    background: linear-gradient(90deg, #ff0000, #ffff00);
+    background: linear-gradient(45deg, #ff0000, #ffff00);
     /* Red to yellow */
     color: #000000;
     transition: background 0.2s ease;
@@ -46,7 +46,7 @@ button {
 }
 
 button:active {
-    background: linear-gradient(90deg, #cc0000, #ffcc00);
+    background: linear-gradient(45deg, #cc0000, #ffcc00);
     /* Slightly darker on press */
     outline: none;
 }
