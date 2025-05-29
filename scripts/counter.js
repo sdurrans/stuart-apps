@@ -1,5 +1,11 @@
 let counter1 = 2;
 let counter2 = 50;
+const TIMER_DEFAULT_SECONDS = 1800; // 30 minutes
+
+let totalSeconds = TIMER_DEFAULT_SECONDS;
+let timerInterval = null;
+let lastStartTime = TIMER_DEFAULT_SECONDS;
+let resetStage = 0;
 
 function updateCounter(step, direction) {
     counter1 += step * direction;
@@ -20,12 +26,19 @@ function resetCounters() {
     counter2 = 50;
     document.getElementById('counter1-value').textContent = counter1;
     document.getElementById('counter2-value').textContent = counter2.toString().padStart(2, '0');
-}
 
-let totalSeconds = 0;
-let timerInterval = null;
-let lastStartTime = 0;
-let resetStage = 0;
+    // Reset timer as well
+    if (timerInterval !== null) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+    totalSeconds = TIMER_DEFAULT_SECONDS;
+    lastStartTime = TIMER_DEFAULT_SECONDS;
+    resetStage = 0;
+    updateDisplay(totalSeconds);
+    setAddTimeButtons(true);
+    document.getElementById('reset-timer').textContent = 'Reset';
+}
 
 function updateDisplay(seconds) {
     const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
@@ -52,10 +65,15 @@ function startTimer() {
 
     setAddTimeButtons(false); // Disable add time buttons
 
+    // Change reset button text to "Stop"
+    document.getElementById('reset-timer').textContent = 'Stop';
+
     timerInterval = setInterval(() => {
         if (totalSeconds <= 0) {
             clearInterval(timerInterval);
             timerInterval = null;
+            document.getElementById('reset-timer').textContent = 'Reset'; // Restore text
+            setAddTimeButtons(true);
             return;
         }
         totalSeconds--;
@@ -64,22 +82,27 @@ function startTimer() {
 }
 
 function resetTimer() {
+    if (timerInterval !== null) {
+        // If timer is running, stop it and restore button text
+        clearInterval(timerInterval);
+        timerInterval = null;
+        document.getElementById('reset-timer').textContent = 'Reset';
+        setAddTimeButtons(true);
+        return;
+    }
+
     if (resetStage === 0) {
         totalSeconds = lastStartTime;
         updateDisplay(totalSeconds);
         resetStage = 1;
     } else {
-        totalSeconds = 0;
+        totalSeconds = TIMER_DEFAULT_SECONDS;
         updateDisplay(totalSeconds);
         resetStage = 0;
     }
 
-    if (timerInterval !== null) {
-        clearInterval(timerInterval);
-        timerInterval = null;
-    }
-
     setAddTimeButtons(true); // Enable add time buttons
+    document.getElementById('reset-timer').textContent = 'Reset';
 }
 
 // Initialize display and enable add time buttons
