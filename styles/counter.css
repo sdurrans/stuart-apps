@@ -43,6 +43,7 @@ button {
     color: #000000;
     transition: background 0.2s ease;
     min-width: 70px;
+    /*touch-action: manipulation;*/
 }
 
 button:active {
@@ -99,10 +100,10 @@ div>button {
     margin: 1rem 0;
 }
 
-button,
+/*button,
 .timer-buttons button {
     touch-action: manipulation;
-}
+}*/
 
 @media (max-width: 600px) {
     body {
